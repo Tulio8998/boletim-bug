@@ -9,10 +9,12 @@ repositories {
 
 dependencies {
     implementation 'org.apache.groovy:groovy:4.0.24'
+    testImplementation 'org.spockframework:spock-core:2.3-groovy-4.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
 }
 
 application {
-    mainClass = 'Boletim'
+    mainClass = 'boletim.Boletim'
 }
 
 // Garante que acentos (média, Recuperação) apareçam corretamente
@@ -22,4 +24,8 @@ tasks.withType(GroovyCompile).configureEach {
 
 tasks.named('run') {
     jvmArgs '-Dfile.encoding=UTF-8', '-Dstdout.encoding=UTF-8'
+}
+
+test {
+    useJUnitPlatform()
 }
